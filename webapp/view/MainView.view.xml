@@ -1,0 +1,63 @@
+<mvc:View controllerName="STC.controller.MainView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<f:SimpleForm editable="true" width="100%">
+						<f:content>
+							<Label text="{i18n>werk}"></Label>
+							<Input id="werkInput" value="{mainView>/werk}" suggestionItems="{/WerkSet}" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelp" maxLength="4">
+								<suggestionItems>
+									<core:Item text="{Werks}"/>
+								</suggestionItems>
+							</Input>
+							<Label text="{i18n>lgPl}"></Label>
+							<Input id="lgPlInput" value="{mainView>/lgort}" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelpLgort"></Input>
+							<Label text="{i18n>lgNr}"></Label>
+							<Input id="lgNrInput" value="{mainView>/lgnum}" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelpLgnum">
+								<suggestionItems>
+									<core:Item text="{Name}"/>
+								</suggestionItems>
+							</Input>
+							<Button press="fetchCustomizingData" text="Fill Input" />
+							<Button press="sendRequest" text="{i18n>search}" />
+							<Button press="confirmTO" text="{i18n>taConfirm}" id="conformButton" />
+						</f:content>
+					</f:SimpleForm>
+					<Table 
+						mode="MultiSelect"
+						id="taTable" 
+						items="{ path: '/TransportauftragSet'}">
+						<headerToolbar>
+							<Toolbar><Title text="{i18n>tableTitle}"/></Toolbar>
+						</headerToolbar>
+						<!-- sap.m.Toolbar -->
+						<columns>
+							<Column id="taNumber">
+								<Text text="{i18n>tableColTaNr}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>tableColTaPos}" ></Text>
+							</Column>
+							<Column id="taText">
+								<Text text="{i18n>tableColTaTxt}"/>
+							</Column>
+						</columns>
+						<!-- sap.m.Column -->
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{Tanum}"/>
+									<ObjectNumber number="{Tapos}" />
+									<ObjectIdentifier title="{Maktx}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<!-- sap.m.ListItemBase -->
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

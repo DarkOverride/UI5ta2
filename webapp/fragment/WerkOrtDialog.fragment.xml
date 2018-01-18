@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Lagerorte"
+		class="sapUiPopupWithPadding"
+		search="_handleValueHelpSearchLgort"
+		confirm="_handleValueHelpCloseLgort"
+		cancel="_handleValueHelpCloseLgort">
+		<StandardListItem
+			title="{Lgort}"
+			description="{Name}" />
+	</SelectDialog>
+</core:FragmentDefinition>
