@@ -1,34 +1,30 @@
-<mvc:View controllerName="STC.controller.MainView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<App>
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="STC.controller.MainView">
+	<App id="app">
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
 					<f:SimpleForm editable="true" width="100%">
 						<f:content>
-							<Label text="{i18n>werk}"></Label>
+							<Label text="{i18n>werk}"/>
 							<Input id="werkInput" value="{mainView>/werk}" suggestionItems="{/WerkSet}" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelp" maxLength="4">
 								<suggestionItems>
 									<core:Item text="{Werks}"/>
 								</suggestionItems>
 							</Input>
-							<Label text="{i18n>lgPl}"></Label>
-							<Input id="lgPlInput" value="{mainView>/lgort}" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelpLgort"></Input>
-							<Label text="{i18n>lgNr}"></Label>
+							<Label text="{i18n>lgPl}"/>
+							<Input id="lgPlInput" value="{mainView>/lgort}" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelpLgort"/>
+							<Label text="{i18n>lgNr}"/>
 							<Input id="lgNrInput" value="{mainView>/lgnum}" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelpLgnum">
 								<suggestionItems>
 									<core:Item text="{Name}"/>
 								</suggestionItems>
 							</Input>
-							<Button press="fetchCustomizingData" text="Fill Input" />
-							<Button press="sendRequest" text="{i18n>search}" />
-							<Button press="confirmTO" text="{i18n>taConfirm}" id="conformButton" />
+							<Button press="fetchCustomizingData" text="Fill Input"/>
+							<Button press="sendRequest" text="{i18n>search}"/>
+							<Button press="confirmTO" text="{i18n>taConfirm}" id="conformButton"/>
 						</f:content>
 					</f:SimpleForm>
-					<Table 
-						mode="MultiSelect"
-						id="taTable" 
-						items="{ path: '/TransportauftragSet'}">
+					<Table mode="MultiSelect" id="taTable" items="{ path: '/TransportauftragSet'}">
 						<headerToolbar>
 							<Toolbar><Title text="{i18n>tableTitle}"/></Toolbar>
 						</headerToolbar>
@@ -38,19 +34,31 @@
 								<Text text="{i18n>tableColTaNr}"/>
 							</Column>
 							<Column>
-								<Text text="{i18n>tableColTaPos}" ></Text>
+								<Text text="{i18n>tableColTaPos}"/>
 							</Column>
 							<Column id="taText">
 								<Text text="{i18n>tableColTaTxt}"/>
 							</Column>
+							<Column id="__column1">
+							    <header>
+							        <Label text="{/#Transportauftrag/Nsola/@sap:label}" id="__label3"/>
+							    </header>
+							</Column>
+							<Column id="__column2">
+							    <header>
+							        <Label text="{/#Transportauftrag/Nlpla/@sap:label}" id="__label4"/>
+							    </header>
+							</Column>
 						</columns>
 						<!-- sap.m.Column -->
 						<items>
-							<ColumnListItem>
+							<ColumnListItem type="Navigation" action:wiring="\{\}" press="onListPress">
 								<cells>
 									<ObjectIdentifier title="{Tanum}"/>
-									<ObjectNumber number="{Tapos}" />
+									<ObjectNumber number="{Tapos}"/>
 									<ObjectIdentifier title="{Maktx}"/>
+									<ObjectNumber number="{Nsola}"/>
+									<ObjectIdentifier title="{Nlpla}"/>
 								</cells>
 							</ColumnListItem>
 						</items>

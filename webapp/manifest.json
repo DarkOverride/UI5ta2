@@ -20,8 +20,7 @@
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml",
-					"annotations": []
+					"localUri": "localService/metadata.xml"
 				}
 			}
 		}
@@ -75,10 +74,12 @@
 				"settings": {
 					"defaultOperationMode": "Server",
 					"defaultBindingMode": "TwoWay",
-					"defaultCountMode": "Request"
+					"defaultCountMode": "Request",
+					"preload": true,
+					"useBatch": false
 				},
-				"dataSource": "ZSTC_ODATA_TA_SRV",
-				"preload": false
+				"dataSource": "ZSTC_ODATA_TA_SRV"
+				
 			}
 		},
 		"resources": {
@@ -90,7 +91,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "zstc.view",
+				"viewPath": "STC.view",
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"bypassed": {
@@ -100,15 +101,24 @@
 				"viewLevel": 1
 			},
 			"routes": [{
-				"pattern": "TransportauftragSet/{lgnum}/:filter:",
+				"pattern": "",
 				"name": "worklist",
-				"target": "mainview"
+				"target": ["mainview"]
+			}, {
+				"pattern": "detail/{mandt}/{lgnum}/{tanum}/{tapos}",
+				"name": "detailTA",
+				"target": ["detailTA"]
 			}],
 			"targets": {
-				"worklist": {
+				"mainview": {
 					"viewName": "MainView",
-					"viewId": "mainview",
+					"viewId": "app",
 					"viewLevel": 1
+				},
+				"detailTA": {
+					"viewName": "DetailTAView",
+					"viewId": "detailTA",
+					"viewLevel": 2
 				}
 			}
 		}
