@@ -165,12 +165,18 @@ sap.ui.define([
 		onListPress: function(oEvent) {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			var oItem = oEvent.getSource();
+						/*
+			oRouter.navTo("detailTA",{ 
+				contextPath: oItem.getBindingContext().getPath().substr(1)
+			}
+						*/
 			oRouter.navTo("detailTA",{ 
 		    mandt: oItem.getBindingContext().getProperty("Mandt"),
 		    lgnum: oItem.getBindingContext().getProperty("Lgnum"),
 			tanum: oItem.getBindingContext().getProperty("Tanum"),
 			tapos: oItem.getBindingContext().getProperty("Tapos")
 			}
+
 			);
 		},
 		confirmTO: function() {

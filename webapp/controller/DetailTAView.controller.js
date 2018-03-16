@@ -19,7 +19,6 @@ sap.ui.define([
 			var sArgs = oEvent.getParameter("arguments");
 			var oView = this.getView();
             var oModel = oView.getModel();
-			oModel.metadataLoaded().then(function() {
 				//zusammenbauen des Keys TransportauftragSet(x,x,x,x)
 				var sObjectPath =
 					oModel.createKey("TransportauftragSet", {
@@ -31,7 +30,6 @@ sap.ui.define([
 				oView.bindElement({
 					path: "/" + sObjectPath
 				});
-			});
 		},
 		
 
